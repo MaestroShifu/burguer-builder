@@ -1,0 +1,1 @@
+Los hoc son aquellos que encerran a otros componentes, posee [props.children]

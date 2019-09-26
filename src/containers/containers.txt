@@ -1,0 +1,1 @@
+Containers son aquellos que transmiten sus estados a otros componentes.

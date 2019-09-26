@@ -1,26 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import style from './Modal.module.css';
 
-import Auxiliary from '../../../hoc/Auxiliary';
+import Auxiliary from '../../../hoc/Auxiliary/Auxiliary';
 import Backdrop from '../Backdrop/Backdrop';
 
-const modal = ( props ) => {
-    return (
-        <Auxiliary>
-            <Backdrop 
-                show={props.show} 
-                clicked={props.modalClose}/>
-            <div 
-                className={style.Modal}
-                style={{
-                    transform: props.show ? 'translatey(0)' : 'translatey(-100vh)',
-                    opacity: props.show ? '1' : '0'
-                }}>
-                {props.children}
-            </div>
-        </Auxiliary>
-    );
-};
+class Modal extends Component {
 
-export default modal;
+    shouldComponentUpdate(nextProps, nextState) {//-> Me evito renderizados inecesarios ya que el modal no se esta mostrando
+        return this.props.show !== nextProps.show; 
+    }
+
+    render() {
+        return (
+            <Auxiliary>
+                <Backdrop 
+                    show={this.props.show} 
+                    clicked={this.props.modalClose}/>
+                <div 
+                    className={style.Modal}
+                    style={{
+                        transform: this.props.show ? 'translatey(0)' : 'translatey(-100vh)',
+                        opacity: this.props.show ? '1' : '0'
+                    }}>
+                    {this.props.children}
+                </div>
+            </Auxiliary>
+        );
+    }
+}
+
+export default Modal;

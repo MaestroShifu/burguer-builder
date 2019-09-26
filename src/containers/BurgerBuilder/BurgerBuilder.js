@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Auxiliary from '../../hoc/Auxiliary';
+import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 import Burger from '../../components/Burger/Burger';
 import BurgerControls from '../../components/Burger/BurgerControls/BurgerControls';
 import Modal from '../../components/UI/Modal/Modal';
@@ -63,7 +63,9 @@ class BurgerBuilder extends Component {
     }
 
     purchaseHandler = () => {
-        this.setState({purchasing: !this.state.purchasing});
+        this.setState((prevState) => {
+            return {purchasing: !prevState.purchasing}
+        });
     }
 
     pruchaseContinueHandler = () => {
